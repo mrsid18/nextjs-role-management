@@ -1,6 +1,4 @@
 import { SessionProvider } from "next-auth/react"
-import "./styles.css"
-
 import type { AppProps } from "next/app"
 
 // Use of the <SessionProvider> is mandatory to allow components that call

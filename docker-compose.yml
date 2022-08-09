@@ -1,0 +1,26 @@
+version: "3.9"
+   
+services:
+  db:
+    container_name: nextjs-db
+    hostname: nextjs-db
+    image: postgres:13.5
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    env_file: ./env/db.env
+    ports:
+      - "5432:5432"
+  
+  app:
+    container_name: nextjs-app
+    build: .
+    restart: on-failure
+    env_file: .env
+    volumes:
+      - ./:/usr/src/app/
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+
+volumes:
+  db_data:
